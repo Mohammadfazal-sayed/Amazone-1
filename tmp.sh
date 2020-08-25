@@ -1,4 +1,4 @@
-ssh ubuntu@172.31.48.150 '
+ssh ubuntu@$ip '
 sudo echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMptrDTq6LO1CVEcdRz283UxigSp3sFXILB9KBcI2jiG9ILM7ZaC5xVhk1TKsimJCBxqci7iLcur5cMiiyyUVYfW6qzoydkkjABtW+n4GizGOERFCamiFKfOxSq9ZyQngXqKoexDiCKsmX8Jgo25ET32cXhu20f3iEHXcFsuY9CC4QqXCuSj579BPZqqqeQPJEZwjXTutkjg275IW49xz+GlMAu46nu3PuT3lAhUd5NohxmYSnOQ2PD3dQco36qJrKW9w0Izvbo4PhAPvOMH7lHhxS+bXMag4ha2yI2MfvM1pcbhSp4rUlvj5zTdXj/u9xbKdRGagObBbK/SLwoT/p jenkins@JenkinsServer
 " >> /home/ubuntu/.ssh/authorized_keys 
 sudo apt-get update
@@ -16,6 +16,13 @@ define host {
         host_name                    NagiosSlave4
         alias                        Ubuntu Host
         address                      172.31.48.150
+        register                     1
+}
+define host {
+        use                          linux-server
+        host_name                    Nagiosslave5
+        alias                        Ubuntu Host
+        address                      $ip
         register                     1
 }
 define host {
@@ -40,7 +47,7 @@ define host {
         register                     1
 }
 define service {
-      host_name                       Nagiosslave2,NagiosSlave,NagiosSlave4,Nagiosslave3
+      host_name                       Nagiosslave2,NagiosSlave,NagiosSlave4,Nagiosslave3,Nagiosslave5
       service_description             PING
       check_command                   check_ping!100.0,20%!500.0,60%
       max_check_attempts              2
