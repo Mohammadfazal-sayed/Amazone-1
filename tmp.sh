@@ -1,3 +1,4 @@
+ip=`aws ec2 describe-instances --region us-east-1 --query "Reservations[*].Instances[*].PublicIpAddress" --output=text | tail -1`
 ssh ubuntu@172.31.51.50 '
 sudo su -
 sudo hostname Nagiosslave4
