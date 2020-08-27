@@ -27,6 +27,13 @@ define host {
 }
 define host {
         use                          linux-server
+        host_name                    Nagiosslave7
+        alias                        Ubuntu Host
+        address                      $ip
+        register                     1
+}
+define host {
+        use                          linux-server
         host_name                    Nagiosslave2
         alias                        Ubuntu Host
         address                      172.31.59.183
@@ -121,7 +128,7 @@ define service {
       notifications_enabled           1
       register                       1
 }
-" >> /usr/local/nagios/etc/servers/host.cfg
+" >> /usr/local/nagios/etc/servers/host1.cfg
 sudo systemctl restart nagios
 '
 
