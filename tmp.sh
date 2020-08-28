@@ -65,7 +65,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       NagiosSlave6
+      host_name                       NagiosSlave7
       service_description             Check SSH
       check_command                   check_ssh
       max_check_attempts              2
