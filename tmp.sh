@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install nagios-nrpe-server nagios-plugins -y
 sudo chmod 777 -R /etc/nagios/
 sudo echo " allowed_hosts=127.0.0.1,172.31.63.150" >> /etc/nagios/nrpe.cfg
-sudo echo " $ip Nagios2" >> /etc/hosts
+sudo echo " $172.31.63.150 NagiosMaster" >> /etc/hosts
 sudo service nagios-nrpe-server restart '
 
 
@@ -14,14 +14,14 @@ sudo chmod 777 -R /usr/local/nagios/
 sudo echo " 
 define host {
         use                          linux-server
-        host_name                    Nagios2
+        host_name                    Nagios3
         alias                        Ubuntu Host
         address                      $ip
         register                     1
 
 }
 define service {
-      host_name                       Nagios2
+      host_name                       Nagios3
       service_description             PING
       check_command                   check_ping!100.0,20%!500.0,60%
       max_check_attempts              2
@@ -36,7 +36,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios2
+      host_name                       Nagios3
       service_description             Check Users
       check_command           check_local_users!20!50
       max_check_attempts              2
@@ -51,7 +51,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios2
+      host_name                       Nagios3
       service_description             Local Disk
       check_command                   check_local_disk!20%!10%!/
       max_check_attempts              2
@@ -66,7 +66,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios2
+      host_name                       Nagios3
       service_description             Check SSH
       check_command                   check_ssh
       max_check_attempts              2
@@ -81,7 +81,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios2
+      host_name                       Nagios3
       service_description             Total Process
       check_command                   check_local_procs!250!400!RSZDT
       max_check_attempts              2
@@ -95,7 +95,7 @@ define service {
       notifications_enabled           1
       register                       1
 }
-" >> /usr/local/nagios/etc/servers/host5.cfg
+" >> /usr/local/nagios/etc/servers/host6.cfg
 sudo systemctl restart nagios
 '
 
