@@ -51,7 +51,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios4
+      host_name                       Nagios11
       service_description             Local Disk
       check_command                   check_local_disk!20%!10%!/
       max_check_attempts              2
@@ -95,7 +95,7 @@ define service {
       notifications_enabled           1
       register                       1
 }
-" >> /usr/local/nagios/etc/servers/host8.cfg
+" >> /usr/local/nagios/etc/servers/host5.cfg
 sudo systemctl restart nagios
 '
 
