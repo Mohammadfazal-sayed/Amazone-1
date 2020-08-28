@@ -1,8 +1,8 @@
 aws ec2 run-instances \
-    --image-id ami-0bcc094591f354be2 \
+    --image-id ami-02b5fbc2cb28b77b8 \
     --instance-type t2.micro \
-    --subnet-id subnet-7f879441 \
-    --security-group-ids sg-07142950944cc283c \
+    --subnet-id subnet-d41d1bbc \
+    --security-group-ids sg-0818a63fb117aafbc \
     --associate-public-ip-address \
-    --key-name sbk \
-    --region us-east-1
+    --key-name mumbai \
+    --region ap-south-1
