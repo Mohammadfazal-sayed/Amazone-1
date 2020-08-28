@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get install nagios-nrpe-server nagios-plugins -y
 sudo chmod 777 -R /etc/nagios/
 sudo echo " allowed_hosts=127.0.0.1,172.31.63.150" >> /etc/nagios/nrpe.cfg
-sudo echo " $172.31.63.150 NagiosMaster" >> /etc/hosts
+sudo echo "172.31.63.150 NagiosMaster" >> /etc/hosts
 sudo service nagios-nrpe-server restart '
 
 
@@ -95,7 +95,7 @@ define service {
       notifications_enabled           1
       register                       1
 }
-" >> /usr/local/nagios/etc/servers/host6.cfg
+" >> /usr/local/nagios/etc/servers/host7.cfg
 sudo systemctl restart nagios
 '
 
