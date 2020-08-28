@@ -14,14 +14,14 @@ sudo chmod 777 -R /usr/local/nagios/
 sudo echo " 
 define host {
         use                          linux-server
-        host_name                    Nagios11
+        host_name                    Nagios1
         alias                        Ubuntu Host
         address                      $ip
         register                     1
 
 }
 define service {
-      host_name                       Nagios11
+      host_name                       Nagios1
       service_description             PING
       check_command                   check_ping!100.0,20%!500.0,60%
       max_check_attempts              2
@@ -36,7 +36,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios11
+      host_name                       Nagios1
       service_description             Check Users
       check_command           check_local_users!20!50
       max_check_attempts              2
@@ -51,7 +51,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios11
+      host_name                       Nagios1
       service_description             Local Disk
       check_command                   check_local_disk!20%!10%!/
       max_check_attempts              2
@@ -66,7 +66,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios11
+      host_name                       Nagios1
       service_description             Check SSH
       check_command                   check_ssh
       max_check_attempts              2
@@ -81,7 +81,7 @@ define service {
       register                        1
 }
 define service {
-      host_name                       Nagios11
+      host_name                       Nagios1
       service_description             Total Process
       check_command                   check_local_procs!250!400!RSZDT
       max_check_attempts              2
@@ -95,7 +95,7 @@ define service {
       notifications_enabled           1
       register                       1
 }
-" >> /usr/local/nagios/etc/servers/host5.cfg
+" >> /usr/local/nagios/etc/servers/host.cfg
 sudo systemctl restart nagios
 '
 
